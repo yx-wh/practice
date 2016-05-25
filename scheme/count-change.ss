@@ -27,9 +27,10 @@
   (display (cc amount 2))
   (display "	")
   (display (cc amount 1))
+  (display "	")
+  (display (cc amount 0))
   (newline)
-  (if (= amount 0)
-    0
+  (if (> amount 0)
     (display-change (- amount 1))))
 
 (display-change 100)

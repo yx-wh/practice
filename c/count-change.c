@@ -4,13 +4,14 @@ int count_change(int n)
 {
 	int A[n+1];
 	int kind[5] = {1, 5, 10, 25, 50};
-	for (int j = 0; j <= n; j++)
-		A[j] = 1;
-	for (int i = 1; i < 5; i++)
+	A[0] = 1;
+	for (int j = 1; j <= n; j++)
+		A[j] = 0;
+	for (int i = 0; i < 5; i++)
 	{
 		for (int j = kind[i]; j <= n; j++)
 		{
-			A[j] += A[j-kind[i]];
+			A[j] += A[j - kind[i]];
 		}
 	}
 	return A[n];
