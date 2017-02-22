@@ -28,6 +28,7 @@
     (/ (* 2 (+ x 1)) 3) 
     1))
 
-(cont-frac (lambda (i) 1.0) 
-	   de
-	   10)
+(+ 2.0 (cont-frac (lambda (i) 1.0) 
+		  de 
+		  100))
+	 
