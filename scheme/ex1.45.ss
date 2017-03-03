@@ -36,3 +36,9 @@
 ;(fixed-point ((repeated average-damp 3) (lambda (y) (/ 100000000.0 (fast-expt y 7)))) 1.0)
 (fixed-point ((repeated average-damp 4) (lambda (y) (/ 100000000.0 (fast-expt y 15)))) 1.0)
 ;可见，求解四次方根至少需要两次平均，求解8次方根需要三次，求解16次方根需要4次平均。
+;https://www.zhihu.com/question/28838814
+;> ((repeated ((repeated average-damp 1) (lambda (y) (/ 10.0 (fast-expt y 3)))) 1200002) 100)
+;1.7777057962924898
+;> ((repeated ((repeated average-damp 1) (lambda (y) (/ 10.0 (fast-expt y 3)))) 1200001) 100)
+;1.7788535796486555
+;貌似是收敛很慢？！
