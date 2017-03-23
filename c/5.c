@@ -15,6 +15,7 @@ int main(void)
 	//	if (a%2 == 1)
 	//		printf("jishu");
 	//printf("%d", a);
-	printf("%s", simple());
+	printf("%s\n", simple());
+	printf("%d", EOF);
 	return 0;
 }
