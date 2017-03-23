@@ -13,10 +13,10 @@ char *mystrtok(char *str, const char *delim)
 	{
 		start = dock;
 	}
-	for (char *i = start; i != '\0'; i++)
-		for (const char *j = delim; j != '\0'; j++)
+	for (char *i = start; *i != '\0'; i++)
+		for (const char *j = delim; *j != '\0'; j++)
 		{
-			if ((*i) == (*j))
+			if (*i == *j)
 			{
 				*i = '\0';
 				dock = 1 + i;
@@ -29,7 +29,8 @@ char *mystrtok(char *str, const char *delim)
 int main (int argc, char *argv[])
 {
 	char str1[] = "a/bbb///cc;xxx:yyy:";
-	char *str2 = ";:";
+	char str2[] = "a/bbb///cc;xxx:yyy:";
+	char *stra = ";:";
 	//char *saveptr1;
 	char *token;
 	//token = strtok_r(str1, str2, &saveptr1);
@@ -38,18 +39,18 @@ int main (int argc, char *argv[])
 	//printf("%s\n", token);
 	//token = strtok_r(NULL, str2, &saveptr1);
 	//printf("%s\n", token);
-	token = mystrtok(str1, str2);
+	token = mystrtok(str1, stra);
 	printf("%s\n", token);
-	token = mystrtok(NULL, str2);
+	token = mystrtok(NULL, stra);
 	printf("%s\n", token);
-	token = mystrtok(NULL, str2);
+	token = mystrtok(NULL, stra);
 	printf("%s\n", token);
 
-	//token = strtok(str1, str2);
-	//printf("%s\n", token);
-	//token = strtok(NULL, str2);
-	//printf("%s\n", token);
-	//token = strtok(NULL, str2);
-	//printf("%s\n", token);
+	token = strtok(str2, stra);
+	printf("%s\n", token);
+	token = strtok(NULL, stra);
+	printf("%s\n", token);
+	token = strtok(NULL, stra);
+	printf("%s\n", token);
 	return 0;
 }
