@@ -3,11 +3,11 @@
 #define N 10000
 #define C 20
 #define R 19
-uint64_t a = 1000000, b = 0, c = N * R, d, e, f[N * R + 1], g;
 
 int main(void)
 {
-
+	uint64_t a = 1000000, b = 0, c = N * R, d, e = 0, f[N * R + 1], g;
+	//printf("%d\n", e);
 
 	for (; b - c;)
 		f[b++] = C * N;
@@ -32,7 +32,7 @@ int main(void)
 			d = d * b;
 		}
 		c = c - R;
-		printf("%.6d", e + d / a);
+		printf("%.6d", (int)(e + d / a));
 		e = d % a;
 	}
 	return 0;
