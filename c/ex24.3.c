@@ -38,6 +38,7 @@ int check_url(char *str)
 int url_token(char *str, char **handle[])
 {
 	int num = check_url(str);
+	int j = 0;
 	if (num <= 0)
 	{
 		(*handle) = NULL;
@@ -45,19 +46,27 @@ int url_token(char *str, char **handle[])
 	}
 	(*handle) = malloc(2 * num * sizeof(char *));
 	
-	char *token;
-	token = strtok(str, "?");
-	for (int i = 0; i < 2 * num - 3; i += 2)
+	//char *token;
+	for (char *i = str; (*i) != '\0'; i++)
 	{
-		token = strtok(NULL, "=");
-		(*handle)[i] = token;
-		token = strtok(NULL, "&");
-		(*handle)[i + 1] = token;
+		if ((*i) == '?' || (*i) == '=' || (*i) == '&')
+		{
+			(*i) = '\0';
+			(*handle)[j++] = i + 1;
+		}
 	}
-	token = strtok(NULL, "=");
-	(*handle)[2 * num - 2] = token;
-	token = strtok(NULL, ""); //最后一个后面就没有&啦。
-	(*handle)[2 * num - 1] = token;
+	//token = strtok(str, "?");
+	//for (int i = 0; i < 2 * num - 3; i += 2)
+	//{
+	//	token = strtok(NULL, "=");
+	//	(*handle)[i] = token;
+	//	token = strtok(NULL, "&");
+	//	(*handle)[i + 1] = token;
+	//}
+	//token = strtok(NULL, "=");
+	//(*handle)[2 * num - 2] = token;
+	//token = strtok(NULL, ""); //最后一个后面就没有&啦。
+	//(*handle)[2 * num - 1] = token;
 	/*
 	 * "http://www.google.cn/search?complete=1&hl=zh-CN&ie=GB2312&q=linux&meta=AA"就可以，但是
 	 * "http://www.google.cn/search?complete=1&hl=zh-CN&ie=GB2312&q=linux&meta="就会segmentation fault
@@ -68,7 +77,7 @@ int url_token(char *str, char **handle[])
 
 int main(void)
 {
-	char a[] = "http://www.google.cn/search?complete=1&hl=zh-CN&ie=GB2312&q=linux&meta=AA";
+	char a[] = "http://www.google.cn/search?complete=1&hl=zh-CN&ie=GB2312&q=linux&meta=";
 	char **h;
 	int n;
 	printf("%s\n", a);
@@ -76,7 +85,7 @@ int main(void)
 	n = url_token(a, &h);
 	for (int i = 0; i < 2 * n; i++)
 	{
-		printf("%s\n", (*(h + i)));
+		printf("%s\n", h[i]);
 	}
 	free(h);
 	return 0;
