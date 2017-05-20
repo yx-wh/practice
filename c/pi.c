@@ -4,6 +4,7 @@
 #define C 20
 #define R 19
 
+
 int main(void)
 {
 	uint64_t a = 1000000, b = 0, c = N * R, d, e = 0, f[N * R + 1], g;
