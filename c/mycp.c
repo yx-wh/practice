@@ -11,6 +11,17 @@ $ ./mycp dir1/fileA dir2
 
 注意做好各种出错处理。
 
+The mode string can also include the letter 'b' either as a last
+character or as a character between the characters in any of
+the two-character strings described above.  This is strictly
+for compatibility with C89 and has no effect; the 'b' is
+ignored on all POSIX conforming systems, including Linux.
+(Other systems may treat text files and binary files
+differently, and adding the 'b' may be a good idea if you do
+I/O to a binary file and expect that your program may be ported
+to non-UNIX environments.)
+
+
  * */
 #include <stdio.h>
 #include <stdlib.h>
