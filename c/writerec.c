@@ -11,7 +11,7 @@ struct record
 
 int main(void)
 {
-	struct record array[2] = {{"Ken", 24}, {"Knuth", 28}};
+	struct record array[2] = {{"Ken", -24}, {"Knuth", -28}};
 	FILE *fp = fopen("recfile", "w");
 	if ( fp == NULL)
 	{
