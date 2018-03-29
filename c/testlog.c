@@ -160,8 +160,28 @@ int main(void)
 	printf("%d\n", isleapyear(2000));
 	printf("%d\n", isleapyear(2400));
 	*/
-	char a[20];
-	printf("%s\n", printtime(time(NULL), a));
+	char output[20];
+	char input[25];
+	int count = 0;
+	//printf("%s\n", printtime(time(NULL), output));
+	FILE *fp = fopen("test.txt", "a+");
+	//fgets(input, sizeof(input), fp);
+	//printf("%s\n", input);
+	while (fgets(input, sizeof(input), fp) > 0)
+	{
+		sscanf(input, "%d", &count);
+	}
+	while (1)
+	{
+		count++;
+		fprintf(fp, "%d ", count);
+		fprintf(fp, "%s\n", printtime(time(NULL), output));
+		fflush(fp);
+		printf("%d ", count);
+		printf("%s\n", printtime(time(NULL), output));
+		sleep(1);
+	}
+	fclose(fp);
 
 	return 0;
 }
