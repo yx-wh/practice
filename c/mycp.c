@@ -75,6 +75,7 @@ int main (int argc, char *argv[])
 	if (argc != 3)
 	{
 		fprintf(stderr, "Need 2 arguments.\n");
+		exit(1);
 	}
 	if ( (fpfrom = fopen(argv[1], "r")) == NULL)
 	{

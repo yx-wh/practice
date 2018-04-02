@@ -1,3 +1,9 @@
+/* 《一站式学习C编程》第24章24.2.11本节综合练习 1
+ * 模仿系统日志生成
+ *
+ *
+ */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <time.h>
