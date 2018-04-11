@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 			cursor = input;
 			if (regcomp(&regexCompiled, regexString, REG_EXTENDED))
 			{
-				printf("Could not compile regular expression.\n");
+				fprintf(stderr, "Could not compile regular expression.\n");
 				return 1;
 			}
 			if (regexec(&regexCompiled, cursor, maxGroups, groupArray, 0))

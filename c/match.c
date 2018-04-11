@@ -10,12 +10,13 @@
 
 int main ()
 {
-  char * source = "server = mysql";
+  char * source = " # include <stdio.h>";
   //char * source = "___ abc123def ___ ghi456 ___";
   //char * regexString = "[a-z]*([0-9]+)([a-z]*)";
-  char * regexString = "([^ \t]*)[ \t]*=[ \t]*(.*)";
-  size_t maxMatches = 2;
-  size_t maxGroups = 3;
+  //char * regexString = "([^ \t]*)[ \t]*=[ \t]*(.*)";
+  char *regexString = "#[ \t]*include[ \t]*<(.*)>";
+  size_t maxMatches = 1;
+  size_t maxGroups = 2;
   
   regex_t regexCompiled;
   regmatch_t groupArray[maxGroups];
@@ -51,7 +52,7 @@ int main ()
           printf("Match %u, Group %u: [%2u-%2u]: %s\n",
                  m, g, groupArray[g].rm_so, groupArray[g].rm_eo,
                  cursorCopy + groupArray[g].rm_so);
-	  printf("<%s>%s</%s>\n", cursorCopy + groupArray[1].rm_so, cursorCopy + groupArray[2].rm_so, cursorCopy + groupArray[1].rm_so);
+	  //printf("%s %s\n", cursorCopy + groupArray[1].rm_so, cursorCopy + groupArray[2].rm_so);
         }
       cursor += offset;
     }
