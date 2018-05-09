@@ -117,7 +117,7 @@ int compare_string(const char* str, long long int number, long long int radix)
 long long int binary_search(const char* p, long long int target)
 {
 	long long int tmp;
-	long long int high = target;
+	long long int high = target + 1;
 	long long int low = 2;
 	long long int mid = low;
 
@@ -144,6 +144,7 @@ int main(void)
 	long long int radix, target, result;
 	char A[11], B[11];
 	scanf("%s %s %d %lld", A, B, &tag, &radix);
+	//printf("%s %s", A, B);
 	if(1 == tag)
 	{
 		target = convert_string_to_number(A, radix);
