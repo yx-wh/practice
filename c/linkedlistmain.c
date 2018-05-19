@@ -15,12 +15,23 @@ int main(void)
 	insert(p);
 	p = make_node(90);
 	insert(p);
-	p = search(5);
-	delete(p);
-	free_node(p);
+	p = make_node(96);
+	insert(p);
+	p = make_node(7);
+	insert(p);
+	p = make_node(100);
+	insert(p);
+	p = make_node(45);
+	insert(p);
+	//p = search(5);
+	//delete(p);
+	//free_node(p);
+	traverse(print_item);
+	insert_sort();
 	traverse(print_item);
 	destroy();
 
+	/*
 	p = make_node(100);
 	push(p);
 	p = make_node(200);
@@ -31,6 +42,7 @@ int main(void)
 		print_item(p);
 		free_node(p);
 	}
+	*/
 
 	return 0;
 }

@@ -36,7 +36,8 @@ void delete(link p)
 {
 	link *pnext;
 	for (pnext = &head; *pnext; pnext = &(*pnext)->next)
-		if (*pnext == p) {
+		if (*pnext == p) 
+		{
 			*pnext = p->next;
 			return;
 		}
@@ -53,7 +54,8 @@ void destroy(void)
 {
 	link q, p = head;
 	head = NULL;
-	while (p) {
+	while (p) 
+	{
 		q = p;
 		p = p->next;
 		free_node(q);
@@ -69,9 +71,36 @@ link pop(void)
 {
 	if (head == NULL)
 		return NULL;
-	else {
+	else 
+	{
 		link p = head;
 		head = head->next;
 		return p;
+	}
+}
+
+void insert_sort(void)
+{
+	link *pnext;
+	link *i;
+	link *j;
+	link *k;
+	link *m;
+	for (pnext = &head; *pnext; m = pnext, pnext = j)
+	{
+		i = &head;
+		j = &(*pnext)->next;
+		while (i != pnext)
+		{
+			k = &(*i)->next;
+			if (((*pnext)->item <= (*k)->item) && ((*pnext)->item >= (*i)->item))
+			{
+				(*i)->next = *pnext;
+				(*pnext)->next = *k;
+				(*m)->next = *j;
+			}
+			i = &(*i)->next;
+		}
+
 	}
 }

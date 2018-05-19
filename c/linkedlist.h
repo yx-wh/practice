@@ -18,4 +18,5 @@ void destroy(void);
 void push(link p);
 link pop(void);
 
+void insert_sort(void);
 #endif
