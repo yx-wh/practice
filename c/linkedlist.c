@@ -81,25 +81,35 @@ link pop(void)
 
 void insert_sort(void)
 {
-	link *pnext;
-	link *i;
-	link *j;
-	link *k;
-	link *m;
-	for (pnext = &head; *pnext; m = pnext, pnext = j)
+	link pnext;
+	link i;
+	link j;
+	link k;
+	link m;
+	for (pnext = head; pnext; m = pnext, pnext = j)
 	{
-		i = &head;
-		j = &(*pnext)->next;
+		i = head;
+		j = pnext->next;
 		while (i != pnext)
 		{
-			k = &(*i)->next;
-			if (((*pnext)->item <= (*k)->item) && ((*pnext)->item >= (*i)->item))
+			k = i->next;
+			if ((k == pnext) && (pnext->item >= i->item))
+				break;
+			if ((i == head) && (pnext->item <= i->item))
 			{
-				(*i)->next = *pnext;
-				(*pnext)->next = *k;
-				(*m)->next = *j;
+				head = pnext;
+				pnext->next = i;
+				m->next = j;
+				break;
 			}
-			i = &(*i)->next;
+			if ((pnext->item <= k->item) && (pnext->item >= i->item))
+			{
+				i->next = pnext;
+				pnext->next = k;
+				m->next = j;
+				break;
+			}
+			i = i->next;
 		}
 
 	}
