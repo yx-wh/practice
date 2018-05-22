@@ -100,6 +100,7 @@ void insert_sort(void)
 				head = pnext;
 				pnext->next = i;
 				m->next = j;
+				pnext = m;
 				break;
 			}
 			if ((pnext->item <= k->item) && (pnext->item >= i->item))
@@ -107,6 +108,7 @@ void insert_sort(void)
 				i->next = pnext;
 				pnext->next = k;
 				m->next = j;
+				pnext = m;
 				break;
 			}
 			i = i->next;
