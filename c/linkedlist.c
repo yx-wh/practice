@@ -79,6 +79,25 @@ link pop(void)
 	}
 }
 
+/*
+ * address d0  b0  90  70  50  30  10
+ * number  45  100 7   96  90  5   10
+ *
+ * 没有pnext = m;时
+ *         i   k
+ * address 90  d0  b0  70  50  30  10
+ * number  7   45  100 96  90  5   10
+ *         m           p   j
+ *
+ * 有了pnext = m;之后
+ *         i   k
+ * address 90  d0  b0  70  50  30  10
+ * number  7   45  100 96  90  5   10
+ *                 m   p   j
+ *
+ */     
+
+
 void insert_sort(void)
 {
 	link pnext;
@@ -94,9 +113,11 @@ void insert_sort(void)
 		{
 			k = i->next;
 			if ((k == pnext) && (pnext->item >= i->item))
+				/*说明p比之前序列中的所有数都要大，不需要变动*/
 				break;
 			if ((i == head) && (pnext->item <= i->item))
 			{
+				/*说明p比之前序列中的所有数都要小，把他改到链表的最开始处*/
 				head = pnext;
 				pnext->next = i;
 				m->next = j;
@@ -105,6 +126,7 @@ void insert_sort(void)
 			}
 			if ((pnext->item <= k->item) && (pnext->item >= i->item))
 			{
+				/*改变next指向的值，使p位于i和k之间*/
 				i->next = pnext;
 				pnext->next = k;
 				m->next = j;
