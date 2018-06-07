@@ -29,6 +29,14 @@ int main(void)
 	traverse(print_item);
 	insert_sort();
 	traverse(print_item);
+	
+	p = make_node(38);
+	enqueue(p);
+	p = dequeue();
+	free_node(p);
+	traverse(print_item);
+	insert_sort();
+	traverse(print_item);
 	destroy();
 
 	/*

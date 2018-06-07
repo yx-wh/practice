@@ -1,8 +1,10 @@
 /* linkedlist.c */
 #include <stdlib.h>
+//#include <stdio.h>
 #include "linkedlist.h"
 
 static link head = NULL;
+static link tail = NULL;
 
 link make_node(unsigned char item)
 {
@@ -28,17 +30,37 @@ link search(unsigned char key)
 
 void insert(link p)
 {
+	if (head == NULL)
+	{
+		tail = p;
+	}
 	p->next = head;
 	head = p;
 }
 
+/*
+ * 要维护tail的话，貌似那个指向指针的指针就不好用啦
+ */
 void delete(link p)
 {
-	link *pnext;
-	for (pnext = &head; *pnext; pnext = &(*pnext)->next)
-		if (*pnext == p) 
+	link pre;
+	if (p == head) 
+	{
+		head = p->next;
+		if (head == NULL)
 		{
-			*pnext = p->next;
+			tail = NULL;
+		}
+		return;
+	}
+	for (pre = head; pre; pre = pre->next)
+		if (pre->next == p) 
+		{
+			pre->next = p->next;
+			if (p->next == NULL)
+			{
+				tail = pre;
+			}
 			return;
 		}
 }
@@ -75,6 +97,8 @@ link pop(void)
 	{
 		link p = head;
 		head = head->next;
+		if (head == NULL)
+			tail = NULL;
 		return p;
 	}
 }
@@ -137,4 +161,28 @@ void insert_sort(void)
 		}
 
 	}
+	//貌似有tail的话，应该等全部重排完了再摸到tail上面去
+	for (i = head; i; i = i->next)
+		if (i->next == NULL)
+			tail = i;
+}
+
+/*
+void print_tail(void)
+{
+	printf("tail:%d\n", tail->item); 
+}
+*/
+
+void enqueue(link p)
+{
+	tail->next = p;
+	p->next = NULL;
+	tail = p;
+	return;
+}
+
+link dequeue(void)
+{
+	return pop();
 }

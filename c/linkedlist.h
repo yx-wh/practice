@@ -19,4 +19,7 @@ void push(link p);
 link pop(void);
 
 void insert_sort(void);
+//void print_tail(void);
+void enqueue(link p);
+link dequeue(void);
 #endif
