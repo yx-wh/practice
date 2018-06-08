@@ -37,8 +37,23 @@ int main(void)
 	traverse(print_item);
 	insert_sort();
 	traverse(print_item);
+	reverse();
+	traverse(print_item);
+
 	destroy();
 
+	p = make_node(7);
+	insert(p);
+	traverse(print_item);
+	reverse();
+	traverse(print_item);
+	p = make_node(100);
+	insert(p);
+	traverse(print_item);
+	reverse();
+	traverse(print_item);
+
+	destroy();
 	/*
 	p = make_node(100);
 	push(p);

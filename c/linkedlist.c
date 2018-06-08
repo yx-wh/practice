@@ -186,3 +186,32 @@ link dequeue(void)
 {
 	return pop();
 }
+
+
+void reverse(void)
+{
+	link i;
+	link j;
+	link k;
+	i = NULL;
+	j = head;
+	if (head == NULL)
+		return;
+	k = head->next;
+	//if (k == NULL)
+	//	return;
+	//这个可以不要	
+	while(k)
+	{
+		j->next = i;
+		i = j;
+		j = k;
+		k = k->next;
+	}
+	j->next = i;
+
+	i = head;
+	head = tail;
+	tail = i;
+	return;
+}

@@ -22,4 +22,5 @@ void insert_sort(void);
 //void print_tail(void);
 void enqueue(link p);
 link dequeue(void);
+void reverse(void);
 #endif
