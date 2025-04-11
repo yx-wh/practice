@@ -6,7 +6,7 @@
 static link head = NULL;
 static link tail = NULL;
 
-link make_node(unsigned char item)
+link make_node(int item)
 {
 	link p = malloc(sizeof *p);
 	p->item = item;
@@ -19,7 +19,7 @@ void free_node(link p)
 	free(p);
 }
 
-link search(unsigned char key)
+link search(int key)
 {
 	link p;
 	for (p = head; p; p = p->next)

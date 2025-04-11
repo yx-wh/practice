@@ -4,7 +4,7 @@
 
 void print_item(link p)
 {
-	printf("%d\n", p->item); 
+	printf("%d ", p->item); 
 }
 
 int main(void)
@@ -27,31 +27,40 @@ int main(void)
 	//delete(p);
 	//free_node(p);
 	traverse(print_item);
+	printf("\n");
 	insert_sort();
 	traverse(print_item);
+	printf("\n");
 	
 	p = make_node(38);
 	enqueue(p);
 	p = dequeue();
 	free_node(p);
 	traverse(print_item);
+	printf("\n");
 	insert_sort();
 	traverse(print_item);
+	printf("\n");
 	reverse();
 	traverse(print_item);
+	printf("\n");
 
 	destroy();
 
 	p = make_node(7);
 	insert(p);
 	traverse(print_item);
+	printf("\n");
 	reverse();
 	traverse(print_item);
+	printf("\n");
 	p = make_node(100);
 	insert(p);
 	traverse(print_item);
+	printf("\n");
 	reverse();
 	traverse(print_item);
+	printf("\n");
 
 	destroy();
 	/*
