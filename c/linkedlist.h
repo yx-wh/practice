@@ -4,13 +4,13 @@
 
 typedef struct node *link;
 struct node {
-	unsigned char item;
+	int item;
 	link next;
 };
 
-link make_node(unsigned char item);
+link make_node(int item);
 void free_node(link p);
-link search(unsigned char key);
+link search(int key);
 void insert(link p);
 void delete(link p);
 void traverse(void (*visit)(link));
